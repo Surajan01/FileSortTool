@@ -24,7 +24,7 @@ while active:
             print("To start input 'y' otherwise write 'q' you can write 'q' at any time to quit and come back later.")
             second_start = input(': ')
             if second_start.lower() == 'y':
-                while len(os.listdir(directory_main) ) != 0:
+                while active and len(os.listdir(directory_main) ) != 0:
                     for img in os.listdir(directory_main):
                         print('An image should pop up...')
                         #add the correct file path here
@@ -50,19 +50,20 @@ while active:
                             shutil.move(f'./batch/{img}', './Not_sure')
                             print('File moved into: Not_sure folder')
                 else:
-                    print(f'There are: 0 images left to sort. You have completed the set! Thanks for your help :)')
-                    print('\\\\      //\\\\      //   ////////   //        //              \\\\\\\\\\\\         ////       //\\       //   ////////')
-                    print(' \\\\    //  \\\\    //    //         //        //              \\\\   \\\\      //   //     // \\\\     //    //      ')
-                    print('  \\\\  //    \\\\  //     ////////   //        //              \\\\    \\\\    //    //    //   \\\\   //     ////////')
-                    print('   \\\\//      \\\\//      //         //        //              \\\\    //    //   //    //     \\\\ //      //      ')
-                    print('    \\/        \\/       ////////   ////////  ////////        \\\\/////      ////     //       \\\\/       ////////')
-                    break
+                    if len(os.listdir(directory_main) ) == 0:
+                        print(f'There are: 0 images left to grade. You have completed the set! Thanks for your help :)')
+                        print('\\\\      //\\\\      //   ////////   //        //              \\\\\\\\\\\\         ////       //\\       //   ////////')
+                        print(' \\\\    //  \\\\    //    //         //        //              \\\\   \\\\      //   //     // \\\\     //    //      ')
+                        print('  \\\\  //    \\\\  //     ////////   //        //              \\\\    \\\\    //    //    //   \\\\   //     ////////')
+                        print('   \\\\//      \\\\//      //         //        //              \\\\    //    //   //    //     \\\\ //      //      ')
+                        print('    \\/        \\/       ////////   ////////  ////////        \\\\/////      ////     //       \\\\/       ////////')
+                        break
+                    elif len(os.listdir(directory_main) ) != 0:
+                        print('Bye')
+                        break
             elif second_start.lower() == 'q':
                 print('Thanks for your help, see you again soon...')
                 active = False
         elif start.lower() == 'n':
             print('Thanks for your help, see you again soon...')
             active = False
-
-    
-
